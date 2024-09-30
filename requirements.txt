@@ -1,0 +1,52 @@
+pyrofork==2.3.43 
+https://codeload.github.com/Jisshubot/pyrogram/zip/refs/heads/dev 
+tgcrypto 
+pymongo==4.8.0 
+motor==3.5.1 
+marshmallow==3.18.0 
+umongo==3.1.0 
+git+https://github.com/Joelkb/cinemagoer 
+Heroku3 
+search_engine_parser 
+wget 
+aiofiles 
+ffmpeg-python 
+ffmpeg 
+requests 
+aiohttp 
+telegraph 
+ujson 
+pyshorteners 
+datetime 
+pytz 
+dnspython==2.3.0 
+python-math 
+speedtest-cli 
+shortzy 
+fuzzywuzzy 
+wheel 
+gunicorn==20.1.0 
+werkzeug==2.0.2 
+Flask 
+itsdangerous==2.0.1 
+python-Levenshtein 
+ 
+ 
+#jisshu 
+opencv-python-headless==4.7.0.68  
+ python-dotenv==0.21.1  
+ speedtest==0.0.1  
+ humanize==4.6.0  
+ Pillow==9.4.0  
+ psutil==5.9.4  
+ NumPy  
+ wheel  
+ dnspython==2.3.0 
+python-decouple 
+ffmpeg-python>=0.2.0 
+ 
+jinja2 
+apscheduler 
+pyshorteners 
+pyromod 
+colorama
