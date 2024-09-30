@@ -1,1 +1,1 @@
-python-3.10.8 # Try this version for Heroku : python-3.12.4
+python-3.10.8
