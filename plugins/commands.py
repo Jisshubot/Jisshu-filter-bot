@@ -1128,7 +1128,6 @@ async def reset_group_command(client, message):
     await save_group_settings(grp_id, 'tutorial_2', TUTORIAL_2)
     await save_group_settings(grp_id, 'tutorial_3', TUTORIAL_3)
     await save_group_settings(grp_id, 'caption', FILE_CAPTION)
-    await save_group_settings(grp_id, 'fsub_id', AUTH_CHANNEL)
     await save_group_settings(grp_id, 'log', LOG_VR_CHANNEL)
     await message.reply_text('ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʀᴇꜱᴇᴛ ɢʀᴏᴜᴘ ꜱᴇᴛᴛɪɴɢꜱ...')
     
