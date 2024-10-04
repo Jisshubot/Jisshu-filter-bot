@@ -1068,3 +1068,36 @@ async def verifyon(bot, message):
     
     await save_group_settings(grpid, 'is_verify', True)
     return await message.reply_text("Verification successfully enabled.")
+
+@Client.on_message(filters.command("reset_group"))
+async def reset_group_command(client, message):
+    grp_id = message.chat.id
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    sts = await message.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    await asyncio.sleep(1.2)
+    await sts.delete()
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+    btn = [[
+        InlineKeyboardButton('🚫 ᴄʟᴏsᴇ 🚫', callback_data='close_data')
+    ]]
+    reply_markup = InlineKeyboardMarkup(btn)
+    await save_group_settings(grp_id, 'shortner', SHORTENER_WEBSITE)
+    await save_group_settings(grp_id, 'api', SHORTENER_API)
+    await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
+    await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
+    await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
+    await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
+    await save_group_settings(grp_id, 'verify_time', TWO_VERIFY_GAP)
+    await save_group_settings(grp_id, 'third_verify_time', THREE_VERIFY_GAP)
+    await save_group_settings(grp_id, 'template', IMDB_TEMPLATE)
+    await save_group_settings(grp_id, 'tutorial', TUTORIAL)
+    await save_group_settings(grp_id, 'tutorial_2', TUTORIAL_2)
+    await save_group_settings(grp_id, 'tutorial_3', TUTORIAL_3)
+    await save_group_settings(grp_id, 'caption', FILE_CAPTION)
+    await save_group_settings(grp_id, 'fsub_id', AUTH_CHANNEL)
+    await save_group_settings(grp_id, 'log', LOG_VR_CHANNEL)
+    await message.reply_text('ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʀᴇꜱᴇᴛ ɢʀᴏᴜᴘ ꜱᴇᴛᴛɪɴɢꜱ...')
+    
