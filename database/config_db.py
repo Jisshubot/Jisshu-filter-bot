@@ -38,31 +38,10 @@ class Database:
         await self.col.delete_many({})
 
     def create_configuration_data(
-            self, maintenance_mode=False,
-            auto_accept=True,
-            one_link=True,
-            one_link_one_file_group=False,
-            private_filter=True,
-            group_filter=True,
-            terms=True,
-            spoll_check=True,
-            forcesub=True,
-            shortner=None,
-            no_ads=False,
+            self,
             advertisement=None):
         
         return {
-            'maintenance_mode': maintenance_mode,
-            'auto_accept': auto_accept,
-            'one_link': one_link,
-            'one_link_one_file_group': one_link_one_file_group,
-            'private_filter': private_filter,
-            'group_filter': group_filter,
-            'terms': terms,
-            'spoll_check': spoll_check,
-            'forcesub': forcesub,
-            'shortner': shortner,
-            'no_ads': no_ads,
             'advertisement': advertisement,
         }
     
