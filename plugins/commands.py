@@ -686,8 +686,42 @@ async def save_tutorial(client, message):
     except:
         return await message.reply_text("<b>Command Incomplete!!\n\nuse like this -</b>\n\n<code>/set_caption https://t.me/bisal_files</code>")    
     await save_group_settings(grp_id, 'tutorial', tutorial)
-    await message.reply_text(f"<b>Successfully changed tutorial for {title} to</b>\n\n{tutorial}", disable_web_page_preview=True)
+    await message.reply_text(f"<b>Successfully Changed 1st Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
+
+@Client.on_message(filters.command('set_tutorial_2'))
+async def set_tutorial_2(client, message):
+    grp_id = message.chat.id
+    title = message.chat.title
+    invite_link = await client.export_chat_invite_link(grp_id)
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text(f"<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...\n\nGroup Name: {title}\nGroup ID: {grp_id}\nGroup Invite Link: {invite_link}</b>")
+    try:
+        tutorial = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("<b>ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !!\n\nᴜꜱᴇ ʟɪᴋᴇ ᴛʜɪꜱ -</b>\n\n<code>/set_tutorial_2 https://t.me/DwldMS/2</code>")
+    await save_group_settings(grp_id, 'tutorial_2', tutorial)
+    await message.reply_text(f"<b>Successfully Changed 2nd Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
     
+@Client.on_message(filters.command('set_tutorial_3'))
+async def set_tutorial_3(client, message):
+    grp_id = message.chat.id
+    title = message.chat.title
+    invite_link = await client.export_chat_invite_link(grp_id)
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text(f"<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...\n\nGroup Name: {title}\nGroup ID: {grp_id}\nGroup Invite Link: {invite_link}</b>")
+    try:
+        tutorial = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("<b>Command Incomplete!!\n\nuse like this -</b>\n\n<code>/set_tutorial https://t.me/Aksbackup</code>")
+    await save_group_settings(grp_id, 'tutorial_3', tutorial)
+    await message.reply_text(f"<b>Successfully Changed 3rd Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
+
 @Client.on_message(filters.command('set_verify'))
 async def set_shortner(c, m):
     grp_id = m.chat.id
