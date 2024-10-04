@@ -174,13 +174,13 @@ async def start(client:Client, message):
         await db.add_user(message.from_user.id, message.from_user.first_name)
         await client.send_message(LOG_CHANNEL, script.NEW_USER_TXT.format(temp.B_LINK, message.from_user.id, message.from_user.mention))
         try: 
-            refData = message.command[1]
-            if refData and refData.split("-", 1)[0] == "Jisshu":
-                Fullref = refData.split("-", 1)
-                refUserId = int(Fullref[1])
-                await db.update_point(refUserId)
-                newPoint = await db.get_point(refUserId)
-                if AUTH_CHANNEL and await is_req_subscribed(client, message):
+         #   refData = message.command[1]
+         #   if refData and refData.split("-", 1)[0] == "Jisshu":
+         #       Fullref = refData.split("-", 1)
+         #       refUserId = int(Fullref[1])
+         #       await db.update_point(refUserId)
+         #       newPoint = await db.get_point(refUserId)
+             if AUTH_CHANNEL and await is_req_subscribed(client, message):
                         buttons = [[
                             InlineKeyboardButton('☆ Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ ☆', url=f'http://t.me/{temp.U_NAME}?startgroup=start')
                         ],[
@@ -200,12 +200,12 @@ async def start(client:Client, message):
                         await message.reply_photo(photo=random.choice(START_IMG), caption=script.START_TXT.format(message.from_user.mention, get_status(), message.from_user.id),
                             reply_markup=reply_markup,
                             parse_mode=enums.ParseMode.HTML)
-                try: 
-                    if newPoint == 0:
-                        await client.send_message(refUserId , script.REF_PREMEUM.format(PREMIUM_POINT))
-                    else: 
-                        await client.send_message(refUserId , script.REF_START.format(message.from_user.mention() , newPoint))
-                except : pass
+          #      try: 
+          #          if newPoint == 0:
+          #              await client.send_message(refUserId , script.REF_PREMEUM.format(PREMIUM_POINT))
+          #          else: 
+          #              await client.send_message(refUserId , script.REF_START.format(message.from_user.mention() , newPoint))
+          #      except : pass
         except Exception as e:
             traceback.print_exc()
             pass
