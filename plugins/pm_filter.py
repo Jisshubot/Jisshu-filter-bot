@@ -1108,8 +1108,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await save_group_settings(grp_id, 'api', SHORTENER_API)
         await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
         await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
-        await save_group_settings(grp_id, 'template', IMDB_TEMPLATE)
+	await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
+        await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
+        await save_group_settings(grp_id, 'verify_time', TWO_VERIFY_GAP)
+        await save_group_settings(grp_id, 'third_verify_time', THREE_VERIFY_GAP)
         await save_group_settings(grp_id, 'tutorial', TUTORIAL)
+        await save_group_settings(grp_id, 'tutorial_2', TUTORIAL_2)
+        await save_group_settings(grp_id, 'tutorial_3', TUTORIAL_3)
+        await save_group_settings(grp_id, 'template', IMDB_TEMPLATE)
         await save_group_settings(grp_id, 'caption', FILE_CAPTION)
         await save_group_settings(grp_id, 'log', LOG_VR_CHANNEL)
         await query.answer('ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʀᴇꜱᴇᴛ...')
@@ -1144,9 +1150,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ],[
                 InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴍᴏᴅᴇ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}'),
                 InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["link"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
-            ],[
-                InlineKeyboardButton('ᴠᴇʀɪғʏ', callback_data='verifyon'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["is_verify"] else 'ᴏғғ ✗', callback_data='verifyon')
             ],[
                 InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]

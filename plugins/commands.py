@@ -310,9 +310,13 @@ async def start(client:Client, message):
             await db.create_verify_id(user_id, verify_id)
             temp.CHAT[user_id] = grp_id
             verify = await get_shortlink(f"https://telegram.me/{temp.U_NAME}?start=notcopy_{user_id}_{verify_id}_{file_id}", grp_id, is_second_shortener, is_third_shortener , pm_mode=pm_mode)
+            if is_third_shortener:
+                howtodownload = settings.get('tutorial_3', TUTORIAL_3)
+            else:
+                howtodownload = settings.get('tutorial_2', TUTORIAL_2) if is_second_shortener else settings.get('tutorial', TUTORIAL)
             buttons = [[
                 InlineKeyboardButton(text="✅ ᴠᴇʀɪғʏ ✅", url=verify),
-                InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ❓", url=settings['tutorial'])
+                InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ❓", url=howtodownload)
                 ],[
                 InlineKeyboardButton(text="😁 ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ - ɴᴏ ɴᴇᴇᴅ ᴛᴏ ᴠᴇʀɪғʏ 😁", callback_data='seeplans'),
             ]]
@@ -499,9 +503,6 @@ async def settings(client, message):
                 InlineKeyboardButton('ʀᴇsᴜʟᴛ ᴍᴏᴅᴇ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}'),
                 InlineKeyboardButton('⛓ ʟɪɴᴋ' if settings["link"] else '🧲 ʙᴜᴛᴛᴏɴ', callback_data=f'setgs#link#{settings["link"]}#{str(grp_id)}')
             ],[
-                InlineKeyboardButton('ᴠᴇʀɪғʏ', callback_data='verifyon'),
-                InlineKeyboardButton('ᴏɴ ✓' if settings["is_verify"] else 'ᴏғғ ✗', callback_data='verifyon')
-            ],[
                 InlineKeyboardButton('❌ ᴄʟᴏsᴇ ❌', callback_data='close_data')
             ]]
             await message.reply_text(
@@ -685,8 +686,42 @@ async def save_tutorial(client, message):
     except:
         return await message.reply_text("<b>Command Incomplete!!\n\nuse like this -</b>\n\n<code>/set_caption https://t.me/bisal_files</code>")    
     await save_group_settings(grp_id, 'tutorial', tutorial)
-    await message.reply_text(f"<b>Successfully changed tutorial for {title} to</b>\n\n{tutorial}", disable_web_page_preview=True)
+    await message.reply_text(f"<b>Successfully Changed 1st Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
+
+@Client.on_message(filters.command('set_tutorial_2'))
+async def set_tutorial_2(client, message):
+    grp_id = message.chat.id
+    title = message.chat.title
+    invite_link = await client.export_chat_invite_link(grp_id)
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text(f"<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...\n\nGroup Name: {title}\nGroup ID: {grp_id}\nGroup Invite Link: {invite_link}</b>")
+    try:
+        tutorial = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("<b>ᴄᴏᴍᴍᴀɴᴅ ɪɴᴄᴏᴍᴘʟᴇᴛᴇ !!\n\nᴜꜱᴇ ʟɪᴋᴇ ᴛʜɪꜱ -</b>\n\n<code>/set_tutorial_2 https://t.me/DwldMS/2</code>")
+    await save_group_settings(grp_id, 'tutorial_2', tutorial)
+    await message.reply_text(f"<b>Successfully Changed 2nd Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
     
+@Client.on_message(filters.command('set_tutorial_3'))
+async def set_tutorial_3(client, message):
+    grp_id = message.chat.id
+    title = message.chat.title
+    invite_link = await client.export_chat_invite_link(grp_id)
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text(f"<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...\n\nGroup Name: {title}\nGroup ID: {grp_id}\nGroup Invite Link: {invite_link}</b>")
+    try:
+        tutorial = message.text.split(" ", 1)[1]
+    except:
+        return await message.reply_text("<b>Command Incomplete!!\n\nuse like this -</b>\n\n<code>/set_tutorial https://t.me/Aksbackup</code>")
+    await save_group_settings(grp_id, 'tutorial_3', tutorial)
+    await message.reply_text(f"<b>Successfully Changed 3rd Verification Tutorial For {title} To</b>\n\n{tutorial}", disable_web_page_preview=True)
+
 @Client.on_message(filters.command('set_verify'))
 async def set_shortner(c, m):
     grp_id = m.chat.id
@@ -1064,3 +1099,36 @@ async def verifyon(bot, message):
     
     await save_group_settings(grpid, 'is_verify', True)
     return await message.reply_text("Verification successfully enabled.")
+
+@Client.on_message(filters.command("reset_group"))
+async def reset_group_command(client, message):
+    grp_id = message.chat.id
+    if not await is_check_admin(client, grp_id, message.from_user.id):
+        return await message.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    sts = await message.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    await asyncio.sleep(1.2)
+    await sts.delete()
+    chat_type = message.chat.type
+    if chat_type not in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
+        return await message.reply_text("<b>ᴜꜱᴇ ᴛʜɪꜱ ᴄᴏᴍᴍᴀɴᴅ ɪɴ ɢʀᴏᴜᴘ...</b>")
+    btn = [[
+        InlineKeyboardButton('🚫 ᴄʟᴏsᴇ 🚫', callback_data='close_data')
+    ]]
+    reply_markup = InlineKeyboardMarkup(btn)
+    await save_group_settings(grp_id, 'shortner', SHORTENER_WEBSITE)
+    await save_group_settings(grp_id, 'api', SHORTENER_API)
+    await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
+    await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
+    await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
+    await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
+    await save_group_settings(grp_id, 'verify_time', TWO_VERIFY_GAP)
+    await save_group_settings(grp_id, 'third_verify_time', THREE_VERIFY_GAP)
+    await save_group_settings(grp_id, 'template', IMDB_TEMPLATE)
+    await save_group_settings(grp_id, 'tutorial', TUTORIAL)
+    await save_group_settings(grp_id, 'tutorial_2', TUTORIAL_2)
+    await save_group_settings(grp_id, 'tutorial_3', TUTORIAL_3)
+    await save_group_settings(grp_id, 'caption', FILE_CAPTION)
+    await save_group_settings(grp_id, 'fsub_id', AUTH_CHANNEL)
+    await save_group_settings(grp_id, 'log', LOG_VR_CHANNEL)
+    await message.reply_text('ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʀᴇꜱᴇᴛ ɢʀᴏᴜᴘ ꜱᴇᴛᴛɪɴɢꜱ...')
+    
