@@ -1108,7 +1108,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await save_group_settings(grp_id, 'api', SHORTENER_API)
         await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
         await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
-	await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
+        await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
         await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
         await save_group_settings(grp_id, 'verify_time', TWO_VERIFY_GAP)
         await save_group_settings(grp_id, 'third_verify_time', THREE_VERIFY_GAP)
