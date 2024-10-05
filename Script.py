@@ -363,7 +363,9 @@ developer : Mr.Jisshu
 -----------Set Imdb Template-----------
 /set_template - set IMDb template <a href="https://t.me/Jisshu_developer/8">Example</a>
 --------------Set Tutorial-------------
-/set_tutorial - set verification tutorial 
+/set_tutorial {tutorial link} - set 1 verification tutorial 
+/set_tutorial_2 {tutorial link} - set 2 verification tutorial 
+/set_tutorial_3 {tutorial link} - set 3 verification tutorial 
 -------------Set Log Channel-----------
 --> ᴀᴅᴅ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ʙʏ ᴛʜɪs ꜰᴏʀᴍᴀᴛ & ᴍᴀᴋᴇ sᴜʀᴇ ʙᴏᴛ ɪs ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ʟᴏɢ ᴄʜᴀɴɴᴇʟ 👇
 
