@@ -51,8 +51,8 @@ SHORTENER_API = environ.get("SHORTENER_API", "41091444ad674cf6d78da75475a07df05c
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'shortxlinks.com')
 SHORTENER_API2 = environ.get("SHORTENER_API2", "41091444ad674cf6d78da75475a07df05cf9a03b")
 SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'shortxlinks.com')
-SHORTENER_API3 = environ.get("SHORTENER_API3", "478d325be68c36fadc819c1c0def9a5ab019910e")
-SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'tnshort.net')
+SHORTENER_API3 = environ.get("SHORTENER_API3", "41091444ad674cf6d78da75475a07df05cf9a03b")
+SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'shortxlinks.com')
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "600"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "600"))
 #---------------------------------------------------------------
