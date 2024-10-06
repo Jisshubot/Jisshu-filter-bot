@@ -1,7 +1,7 @@
 import datetime
 import pytz
 from motor.motor_asyncio import AsyncIOMotorClient
-from info import SETTINGS, IS_PM_SEARCH, PREMIUM_POINT,REF_PREMIUM,IS_VERIFY, SHORTENER_WEBSITE3, SHORTENER_API3, THREE_VERIFY_GAP, LINK_MODE, FILE_CAPTION, TUTORIAL, DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, PROTECT_CONTENT, AUTO_DELETE, SPELL_CHECK, AUTO_FILTER, LOG_VR_CHANNEL, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, TWO_VERIFY_GAP
+from info import SETTINGS, IS_PM_SEARCH, IS_SEND_MOVIE_UPDATE, PREMIUM_POINT,REF_PREMIUM,IS_VERIFY, SHORTENER_WEBSITE3, SHORTENER_API3, THREE_VERIFY_GAP, LINK_MODE, FILE_CAPTION, TUTORIAL, DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, PROTECT_CONTENT, AUTO_DELETE, SPELL_CHECK, AUTO_FILTER, LOG_VR_CHANNEL, SHORTENER_WEBSITE, SHORTENER_API, SHORTENER_WEBSITE2, SHORTENER_API2, TWO_VERIFY_GAP
 # from utils import get_seconds
 client = AsyncIOMotorClient(DATABASE_URI)
 mydb = client[DATABASE_NAME]
@@ -380,6 +380,20 @@ class Database:
         else:
             return False
 
+    async def get_send_movie_update_status(self, bot_id):
+        bot = await self.botcol.find_one({'id': bot_id})
+        if bot and bot.get('movie_update_feature'):
+            return bot['movie_update_feature']
+        else:
+            return IS_SEND_MOVIE_UPDATE
+
+    async def update_send_movie_update_status(self, bot_id, enable):
+        bot = await self.botcol.find_one({'id': int(bot_id)})
+        if bot:
+            await self.botcol.update_one({'id': int(bot_id)}, {'$set': {'movie_update_feature': enable}})
+        else:
+            await self.botcol.insert_one({'id': int(bot_id), 'movie_update_feature': enable})            
+            
     async def get_pm_search_status(self, bot_id):
         bot = await self.botcol.find_one({'id': bot_id})
         if bot and bot.get('bot_pm_search'):
