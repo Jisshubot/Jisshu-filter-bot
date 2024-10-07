@@ -41,7 +41,7 @@ async def invite(client, message):
 
 @Client.on_message(filters.command("start") & filters.incoming)
 async def start(client:Client, message):
-    await message.react(emoji=random.choice(REACTIONS), big=True)
+    await message.react(emoji=random.choice(REACTIONS))
     pm_mode = False
     try:
          data = message.command[1]
