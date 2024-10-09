@@ -1221,7 +1221,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         btn = [
             [
                 InlineKeyboardButton(
-                    "🎗️ ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇ 🎗️",
+                    "📥 ɢᴇᴛ ʏᴏᴜʀ ғɪʟᴇ 📥",
                     url=f"https://t.me/{temp.U_NAME}?start=file_{chat_id}_{file_id}",
                 )
             ]
