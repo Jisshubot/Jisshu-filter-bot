@@ -315,7 +315,7 @@ async def start(client:Client, message):
             else:
                 howtodownload = settings.get('tutorial_2', TUTORIAL_2) if is_second_shortener else settings.get('tutorial', TUTORIAL)
             buttons = [[
-                InlineKeyboardButton(text="✅ ᴠᴇʀɪғʏ ✅", url=verify),
+                InlineKeyboardButton(text="📥 ᴠᴇʀɪғʏ 📥", url=verify),
                 InlineKeyboardButton(text="ʜᴏᴡ ᴛᴏ ᴠᴇʀɪғʏ❓", url=howtodownload)
                 ],[
                 InlineKeyboardButton(text="😁 ʙᴜʏ sᴜʙsᴄʀɪᴘᴛɪᴏɴ - ɴᴏ ɴᴇᴇᴅ ᴛᴏ ᴠᴇʀɪғʏ 😁", callback_data='seeplans'),
