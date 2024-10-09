@@ -93,7 +93,7 @@ async def pm_search(client, message):
                     [
                         InlineKeyboardButton(
                             "📝 ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ",
-                            url=f"https://t.me/JisshuMovieZone",
+                            url=f"https://t.me/FilmCity_Request",
                         )
                     ]
                 ]
