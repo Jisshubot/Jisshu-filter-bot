@@ -32,16 +32,16 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 #---------------------------------------------------------------
 #----------- There will be channel id add in all these ---------
 LOG_API_CHANNEL = int(environ.get('LOG_API_CHANNEL', '-1002193397974'))  # set shortner log channel
-DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-1002193397974')) # The movie you upload in it will be deleted from the bot.
+DELETE_CHANNELS = int(environ.get('DELETE_CHANNELS','-1002170931554')) # The movie you upload in it will be deleted from the bot.
 LOG_VR_CHANNEL = int(environ.get('LOG_VR_CHANNEL', '-1002193397974'))
-auth_channel = environ.get('AUTH_CHANNEL', '-1002148036356')
+auth_channel = environ.get('AUTH_CHANNEL', '-1001493315262')
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', '-1002177384458'))
 request_channel = environ.get('REQUEST_CHANNEL', '-1002185647844') # If anyone sends a request message to your bot, you will get it in this channel.
 MOVIE_UPDATE_CHANNEL = int(environ.get('MOVIE_UPDATE_CHANNEL', '-1002260226581')) # 
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/FilmCity_Request') #Support group link ( make sure bot is admin )
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-IS_VERIFY = is_enabled('IS_VERIFY', True)
+IS_VERIFY = is_enabled('IS_VERIFY', False)
 #---------------------------------------------------------------
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/Filmcity_4u/86")
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/Filmcity_4u/86")
