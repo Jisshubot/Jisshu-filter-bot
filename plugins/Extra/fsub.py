@@ -32,7 +32,7 @@ async def force_subscribe(client, message):
         return await m.edit("I need to be an admin in the given chat to perform this action!\nMake me admin in your Target chat and try again.")
     id = await client.get_chat(toFsub)
     try:
-        await db.setFsub(grpID=message.chat.id, fsubID=id.id)
+        await db.setFsub(grpID=message.chat.id, fsubID=id.id, name=id.title)
         return await m.edit(f"Successfully added force subscribe to {toFsub} in {message.chat.title}")
     except Exception as e:
         logger.exception(e)
