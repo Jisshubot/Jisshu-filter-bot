@@ -298,3 +298,8 @@ def get_readable_time(seconds):
             period_value, seconds = divmod(seconds, period_seconds)
             result += f'{int(period_value)}{period_name}'
     return result
+
+async def save_default_settings(id):
+    await db.reset_group_settings(id)
+    current = await db.get_settings(id)
+    temp.SETTINGS.update({id: current})

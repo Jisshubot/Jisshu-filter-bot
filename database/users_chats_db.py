@@ -416,5 +416,9 @@ class Database:
             else:
                 return None
         return await self.movies_update_channel.update_one({} , {'$set': {'id': id}} , upsert=True)
+
+    async def reset_group_settings(self, id):
+        await self.grp.update_one({'id': int(id)}, {'$set': {'settings': self.default}})
+
 db = Database()
 
