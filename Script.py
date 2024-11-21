@@ -330,7 +330,7 @@ User - {}"""
 -----------Set Imdb Template-----------
 /set_template - set IMDb template <a href="https://t.me/Jisshu_developer/8">Example</a>
 --------------Set Tutorial-------------
-/set_tutorial - set 1 verification tutorial 
+/set_tutorial - set verification tutorial 
 -------------Set Log Channel-----------
 --> ᴀᴅᴅ ʟᴏɢ ᴄʜᴀɴɴᴇʟ ʙʏ ᴛʜɪs ꜰᴏʀᴍᴀᴛ & ᴍᴀᴋᴇ sᴜʀᴇ ʙᴏᴛ ɪs ᴀᴅᴍɪɴ ɪɴ ʏᴏᴜʀ ʟᴏɢ ᴄʜᴀɴɴᴇʟ 👇
 
