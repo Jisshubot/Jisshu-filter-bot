@@ -16,7 +16,7 @@ from database.config_db import mdb
 from database.topdb import JsTopDB
 from database.jsreferdb import referdb
 from plugins.pm_filter import auto_filter
-from utils import formate_file_name,  get_settings, save_group_settings, is_req_subscribed, get_size, get_shortlink, is_check_admin, get_status, temp, get_readable_time
+from utils import formate_file_name,  get_settings, save_group_settings, is_req_subscribed, get_size, get_shortlink, is_check_admin, get_status, temp, get_readable_time, save_default_settings
 import re
 import base64
 from info import *
@@ -1140,19 +1140,6 @@ async def reset_group_command(client, message):
         InlineKeyboardButton('🚫 ᴄʟᴏsᴇ 🚫', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
-    await save_group_settings(grp_id, 'shortner', SHORTENER_WEBSITE)
-    await save_group_settings(grp_id, 'api', SHORTENER_API)
-    await save_group_settings(grp_id, 'shortner_two', SHORTENER_WEBSITE2)
-    await save_group_settings(grp_id, 'api_two', SHORTENER_API2)
-    await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
-    await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
-    await save_group_settings(grp_id, 'verify_time', TWO_VERIFY_GAP)
-    await save_group_settings(grp_id, 'third_verify_time', THREE_VERIFY_GAP)
-    await save_group_settings(grp_id, 'template', IMDB_TEMPLATE)
-    await save_group_settings(grp_id, 'tutorial', TUTORIAL)
-    await save_group_settings(grp_id, 'tutorial_2', TUTORIAL_2)
-    await save_group_settings(grp_id, 'tutorial_3', TUTORIAL_3)
-    await save_group_settings(grp_id, 'caption', FILE_CAPTION)
-    await save_group_settings(grp_id, 'log', LOG_VR_CHANNEL)
+    await save_default_settings(grp_id)
     await message.reply_text('ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ʀᴇꜱᴇᴛ ɢʀᴏᴜᴘ ꜱᴇᴛᴛɪɴɢꜱ...')
     
