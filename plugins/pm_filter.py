@@ -704,7 +704,8 @@ async def advantage_spoll_choker(bot, query):
 async def pmfile_cb(client, query):
     _, userid, fileid = query.data.split("#")
     if query.from_user.id != userid:
-	return await query.answer("Request Your Own!!", show_alert=True)
+        await query.answer("Request Your Own!!", show_alert=True)
+	return
 
     await query.answer(f"https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{fileid}")
     return
