@@ -705,7 +705,7 @@ async def pmfile_cb(client, query):
     _, userid, fileid = query.data.split("#")
     if query.from_user.id != userid:
         await query.answer("Request Your Own!!", show_alert=True)
-	return
+        return
 
     await query.answer(f"https://telegram.dog/{temp.U_NAME}?start=file_{query.message.chat.id}_{fileid}")
     return
