@@ -55,9 +55,9 @@ async def group_search(client, message):
     user_id = message.from_user.id if message.from_user else None
     chat_id = message.chat.id
     settings = await get_settings(chat_id)
-    ifJoinedFsub = await is_user_fsub(client,message)
-    if ifJoinedFsub == False:
-        return
+#    ifJoinedFsub = await is_user_fsub(client,message)
+#    if ifJoinedFsub == False:
+#        return
     if message.chat.id == SUPPORT_GROUP :
                 if message.text.startswith("/"):
                     return
