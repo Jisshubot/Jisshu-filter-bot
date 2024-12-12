@@ -13,7 +13,6 @@ from database.users_chats_db import db
 from database.ia_filterdb import Media, get_search_results, get_bad_files, get_file_details
 import random
 lock = asyncio.Lock()
-from .Extra.checkFsub import is_user_fsub
 import traceback
 from fuzzywuzzy import process
 BUTTONS = {}
@@ -55,10 +54,7 @@ async def group_search(client, message):
     user_id = message.from_user.id if message.from_user else None
     chat_id = message.chat.id
     settings = await get_settings(chat_id)
-    ifJoinedFsub = await is_user_fsub(client, message)
-    if not ifJoinedFsub:
-        return
-
+ 
     if message.chat.id == SUPPORT_GROUP :
                 if message.text.startswith("/"):
                     return
