@@ -369,7 +369,10 @@ class Database:
     async def getFsub(self , grpID):
         link = await self.grp_and_ids.find_one({"grpID": grpID})
         if link is not None:
-            return {"id": link.id, "name": link.name}
+            if isinstance(vp, dict):
+                return {"id": link.fsubID, "name": link.name}
+            else:
+                return {"id": link.fsubID}
         else:
             return None
             
