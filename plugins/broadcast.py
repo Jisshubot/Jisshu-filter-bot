@@ -24,16 +24,14 @@ async def broadcast_users(bot, message):
     if lock.locked():
         return await message.reply('Currently broadcast processing, Wait for complete.')
 
-    p = await message.reply('<b>Do you want pin this message in users?</b>', reply_markup=ReplyKeyboardMarkup([['Yes', 'No']], one_time_keyboard=True, resize_keyboard=True))
-    msg = await bot.listen(chat_id=message.chat.id, user_id=message.from_user.id)
+    msg = await message.ask('<b>Do you want pin this message in users?</b>', reply_markup=ReplyKeyboardMarkup([['Yes', 'No']], one_time_keyboard=True, resize_keyboard=True))
     if msg.text == 'Yes':
         is_pin = True
     elif msg.text == 'No':
         is_pin = False
     else:
-        await p.delete()
-        return await message.reply_text('Wrong Response!')
-    await p.delete()
+        return await msg.edit('Wrong Response!')
+    await msg.delete()
     users = await db.get_all_users()
     b_msg = message.reply_to_message
     b_sts = await message.reply_text(text='<b>ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ ʏᴏᴜʀ ᴍᴇssᴀɢᴇs ᴛᴏ ᴜsᴇʀs ⌛️</b>')
@@ -67,16 +65,14 @@ async def broadcast_users(bot, message):
 
 @Client.on_message(filters.command("grp_broadcast") & filters.user(ADMINS) & filters.reply)
 async def broadcast_group(bot, message):
-    p = await message.reply('<b>Do you want pin this message in groups?</b>', reply_markup=ReplyKeyboardMarkup([['Yes', 'No']], one_time_keyboard=True, resize_keyboard=True))
-    msg = await bot.listen(chat_id=message.chat.id, user_id=message.from_user.id)
+    msg = await message.ask('<b>Do you want pin this message in groups?</b>', reply_markup=ReplyKeyboardMarkup([['Yes', 'No']], one_time_keyboard=True, resize_keyboard=True))
     if msg.text == 'Yes':
         is_pin = True
     elif msg.text == 'No':
         is_pin = False
     else:
-        await p.delete()
-        return await message.reply_text('Wrong Response!')
-    await p.delete()
+        return await msg.edit('Wrong Response!')
+    await msg.delete()
     chats = await db.get_all_chats()
     b_msg = message.reply_to_message
     b_sts = await message.reply_text(text='<b>ʙʀᴏᴀᴅᴄᴀsᴛɪɴɢ ʏᴏᴜʀ ᴍᴇssᴀɢᴇs ᴛᴏ ɢʀᴏᴜᴘs ⏳</b>')
