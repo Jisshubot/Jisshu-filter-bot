@@ -1,5 +1,4 @@
-#pyrofork
-https://codeload.github.com/KurimuzonAkuma/pyrogram/zip/refs/heads/dev
+pyrofork=2.3.45
 tgcrypto 
 pymongo==4.8.0 
 motor==3.5.1 
@@ -48,5 +47,4 @@ ffmpeg-python>=0.2.0
 jinja2 
 apscheduler 
 pyshorteners 
-pyromod 
 colorama
