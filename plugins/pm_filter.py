@@ -43,8 +43,7 @@ async def pm_search(client, message):
             return await auto_filter(client, message)
         await auto_filter(client, message)
     else:
-        await message.reply_text("<b><i>ɪ ᴀᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ʜᴇʀᴇ. ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇꜱ ɪɴ ᴏᴜʀ ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ.</i></b>",
-                                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ", url=f'https://t.me/JisshuMovieZone')]]))
+        await message.reply_text("<b><i>ɪ ᴀᴍ ɴᴏᴛ ᴡᴏʀᴋɪɴɢ ʜᴇʀᴇ. ꜱᴇᴀʀᴄʜ ᴍᴏᴠɪᴇꜱ ɪɴ ᴏᴜʀ ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ.</i></b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 ᴍᴏᴠɪᴇ ꜱᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ", url='https://t.me/JisshuMovieZone')]]))
         
     
 @Client.on_message(filters.group & filters.text & filters.incoming)
@@ -61,9 +60,7 @@ async def group_search(client, message):
                 files, n_offset, total = await get_search_results(message.text, offset=0)
                 if total != 0:
                     link = await db.get_set_grp_links(index=1)
-                    msg = await message.reply_text(script.SUPPORT_GRP_MOVIE_TEXT.format(message.from_user.mention() , total) ,             reply_markup=InlineKeyboardMarkup([
-                        [ InlineKeyboardButton('ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ 😉' , url=link)]
-                        ]))
+                    msg = await message.reply_text(script.SUPPORT_GRP_MOVIE_TEXT.format(message.from_user.mention(), total), reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('ɢᴇᴛ ғɪʟᴇs ғʀᴏᴍ ʜᴇʀᴇ 😉' , url='https://t.me/JisshuMovieZone')]]))
                     await asyncio.sleep(300)
                     return await msg.delete()
                 else: return     
@@ -126,9 +123,9 @@ async def group_search(client, message):
 @Client.on_callback_query(filters.regex(r"^reffff"))
 async def refercall(bot, query):
     btn = [[
-        InlineKeyboardButton('invite link', url=f'https://telegram.me/share/url?url=https://t.me/{bot.me.username}?start=reff_{query.from_user.id}&text=Hello%21%20Experience%20a%20bot%20that%20offers%20a%20vast%20library%20of%20unlimited%20movies%20and%20series.%20%F0%9F%98%83'),
+        InlineKeyboardButton('Invite Link', url=f'https://telegram.me/share/url?url=https://t.me/{bot.me.username}?start=reff_{query.from_user.id}&text=Hello%21%20Experience%20a%20bot%20that%20offers%20a%20vast%20library%20of%20unlimited%20movies%20and%20series.%20%F0%9F%98%83'),
         InlineKeyboardButton(f'⏳ {referdb.get_refer_points(query.from_user.id)}', callback_data='ref_point'),
-        InlineKeyboardButton('Back', callback_data='start')
+        InlineKeyboardButton('Back', callback_data='close_data')
     ]]
     reply_markup = InlineKeyboardMarkup(btn)
     await bot.send_photo(
