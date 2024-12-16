@@ -21,7 +21,7 @@ shortzy
 fuzzywuzzy 
 wheel 
 gunicorn==20.1.0 
-werkzeug==2.0.2 
+werkzeug==3.0.6 
 Flask 
 itsdangerous==2.0.1 
 python-Levenshtein 
