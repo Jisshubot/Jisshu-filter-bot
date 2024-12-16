@@ -5,20 +5,16 @@ motor==3.5.1
 marshmallow==3.18.0 
 umongo==3.1.0 
 git+https://github.com/Joelkb/cinemagoer 
-Heroku3 
 search_engine_parser 
 wget 
 aiofiles 
-ffmpeg-python 
 ffmpeg 
 requests 
-aiohttp 
-telegraph 
+aiohttp  
 ujson 
 pyshorteners 
 datetime 
 pytz 
-dnspython==2.3.0 
 python-math 
 speedtest-cli 
 shortzy 
@@ -46,5 +42,4 @@ ffmpeg-python>=0.2.0
  
 jinja2 
 apscheduler 
-pyshorteners 
 colorama
